@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(ros2-g29-publisher)
+project(g29-publisher)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,7 +7,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclpy REQUIRED)
+find_package(rclcpp REQUIRED)
 
 add_executable(wheel_interface src/wheel_interface.cpp)
 target_include_directories(wheel_interface PUBLIC
@@ -16,7 +16,7 @@ target_include_directories(wheel_interface PUBLIC
 target_compile_features(wheel_interface PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 ament_target_dependencies(
   wheel_interface
-  "rclpy"
+  "rclcpp"
 )
 
 install(TARGETS wheel_interface
